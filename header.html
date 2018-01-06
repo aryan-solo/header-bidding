@@ -1,0 +1,144 @@
+<!--header for liveverse-->
+<!-- just the header bidding part and the google ads-->
+
+
+<head>
+<!-- google authentication for dfp-->
+
+<script src=' URL/IP where prebid.js file exists' async></script>
+<script type='text/javascript'>
+var addStartTime=(new Date()).getTime()
+	function detectWidth(){
+
+		return window.screen.width || window.innerWidth || window.document.documentElement.clientWidth || Math.min(window.innerWidth, window.document.documentElement.clientWidth) || window.document.getElementByTagName('body')[0].clientWidth;
+
+	}
+
+function detectDevice(){
+	var width = detectWidth()
+	if(width>=990) return 'desktop';
+	else if(width>=770) return 'tablet';
+	else return 'mobile' ;
+}
+
+var TIMEOUT = 2000;
+
+var googletag = googletag ? googletag : {};   // some value in var googletag or empty object
+googletag.cmd=googletag.cmd ? googletag.cmd : []; 
+
+var pbjs = pbjs ? pbjs:{};
+pbjs.que = pbjs.que?pbjs.que:[];
+
+var adUnits= adUnits||[];
+
+function initAdserver(){
+	if(pbjs.initAdserverSet) return;
+	(function() {
+		var gads= document.createElement('script');
+		gads.async=true;
+		gads.type='text/javascript';
+		var useSSL = 'https:' == document.location.protocol;
+		gads.src=(useSSL ? 'https:':'http:')+
+		'//www.googletagservices.com/tag/js/gpt.js';
+		var node =document.getElementByTagName('script')[0];
+		node.parentNode.insertBefore(gads,node);
+
+	})();
+	pbjs.initAdserverSet=true;
+};
+
+pbjs.timeout=setTimeout(initAdserver, TIMEOUT);
+pbjs.timeStart=addStartTime;
+
+
+var dfpNetwork='9649879';
+var width=detectWidth();
+var sizeMapping = [];  // list/dict of list(sizes) available to show ads
+sizeMapping["Listverse_ROS_ATF"]=[[300,250]]
+sizeMapping["Listverse_ROS_ATF_TOP"]=[[728,90]]
+sizeMapping["LP_LAST_ITEM"]=[[300,250],[300,600]]
+sizeMapping["LV_PREM_Article_Top"]=[[336,280]]
+sizeMapping["LV_ADUNIFY_TOP"]=[[300,250],[336,280],[480,350]]
+sizeMapping["LV_ADUNIFY_MID"]=[[300,250],[336,280],[480,350]]
+sizeMapping["LV_ADUNIFY_BOT"]=[[300,250],[336,280],[480,350]]
+sizeMapping["LV_all_btf_banner"]=[[728,90],[970,90]]
+if(width>=1024){
+	adUnits.push({
+		network:dfpNetwork,
+		adunit:'Listverse_ROS_ATF',
+		size:sizeMapping["Listverse_ROS_ATF"]
+		code:'div-gpt-ad-1358325249632-1'    // div tag id where this ad will be served or real auction space on the webpage ! need to know logic behind such large number in its name
+	});
+}
+if(width>=768){
+	adUnits.push({
+		network:dfpNetwork,
+		adunit:'Listverse_ROS_ATF_TOP',
+		size:sizeMapping["Listverse_ROS_ATF_TOP"]
+		code:'div-gpt-ad-1358325249632-2'    
+	});
+}
+if(width>=1024){
+	adUnits.push({
+		network:dfpNetwork,
+		adunit:'LP_LAST_ITEM',
+		size:sizeMapping["LP_LAST_ITEM"]
+		code:'div-gpt-ad-1358325249632-0'    // kept the div name same as i saw !   
+	});
+}
+if(width>=1440){
+	adUnits.push({
+		network:dfpNetwork,
+		adunit:'LV_PREM_Article_Top',
+		size:sizeMapping["LV_PREM_Article_Top"]
+		code:'div-gpt-ad-1358325249632-6'    
+	});
+}
+else{
+	adUnits.push({
+		network:dfpNetwork,
+		adunit:'LV_ADUNIFY_TOP',
+		size:sizeMapping["LV_ADUNIFY_TOP"]
+		code:'div-gpt-ad-1469585373188-0'    
+	});  // ? else part for size lesser than size of a desktop or tablets
+	adUnits.push({
+		network:dfpNetwork,
+		adunit:'LV_ADUNIFY_MID',
+		size:sizeMapping["LV_ADUNIFY_MID"]
+		code:'div-gpt-ad-1469585179245-0'    
+	});
+	adUnits.push({
+		network:dfpNetwork,
+		adunit:'LV_ADUNIFY_BOT',
+		size:sizeMapping["LV_ADUNIFY_BOT"]
+		code:'div-gpt-ad-1469585288384-0'    
+	});	
+	adUnits.push({
+		network:dfpNetwork,
+		adunit:'LV_all_btf_banner',
+		size:sizeMapping["LV_all_btf_banner"]
+		code:'div-gpt-ad-146708677472-0'    
+	});
+}
+googletag.cmd.push(function() {
+    if(adUnits){
+    	for (var i = 0, len = adUnits.length; i < len; i++) {
+      		googletag.defineSlot('/'+adUnits[i].network+'/'+adUnits[i].adunit, adUnits[i].size, adUnits[i].code).addService(googletag.pubads());
+        }
+      }
+    });
+googletag.cmd.push(function() {
+    pbjs.que.push(function() {
+	pbjs.setTargetingForGPTAsync();});
+    googletag.pubads().setTargeting("pagetype","article")
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().collapseEmptyDivs();
+    googletag.enableServices();
+    });
+</script>
+</head>
+
+
+
+
+
