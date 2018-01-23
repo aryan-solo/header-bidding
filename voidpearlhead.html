@@ -1,0 +1,212 @@
+<!-- live verse like header bidding on voidpearl-->
+
+
+<!-- BEGIN: Header Bidding -->
+<script type="text/javascript">
+    var adsStart = (new Date()).getTime();
+    function detectWidth() {
+        return window.screen.width || window.innerWidth || window.document.documentElement.clientWidth || Math.min(window.innerWidth, window.document.documentElement.clientWidth) || window.innerWidth || window.document.documentElement.clientWidth || window.document.getElementsByTagName('body')[0].clientWidth;
+    }
+    function detectPage(loc)
+    {
+        var homepages = [ '/', 'index.html', 'index.htm', 'index.php', 'main.html', 'main.htm', 'homepage.html', 'index2.htm' ];
+        if(homepages.indexOf(loc) >= 0) return 'homepage';
+        if(loc.indexOf('/tag/') >= 0) return 'archive';
+        return 'article';
+    }
+    var TIMEOUT = 2000;
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    var pbjs = pbjs || {};
+    pbjs.que = pbjs.que || [];
+    var adUnits = adUnits || [];
+    var pageType = detectPage(window.document.location.pathname);
+    var device = (detectWidth() >= 768) ? "desktop" : "mobile";
+    function initAdServer() {
+        if (pbjs.initAdserverSet) return;
+        (function() {
+            var gads = document.createElement('script');
+            gads.async = true;
+            gads.type = 'text/javascript';
+            var useSSL = 'https:' == document.location.protocol;
+            gads.src = (useSSL ? 'https:' : 'http:') +
+                '//www.googletagservices.com/tag/js/gpt.js';
+            var node = document.getElementsByTagName('script')[0];
+            node.parentNode.insertBefore(gads, node);
+        })();
+        pbjs.initAdserverSet = true;
+    };
+    pbjs.timeout = setTimeout(initAdServer, TIMEOUT);
+    pbjs.timeStart = adsStart;
+    pbjs.pageType = pageType;
+    pbjs.device = device;
+    var dfpNetwork = '131593057';
+    var midMapping = [[300,250],[728,90],[970,250],[336,280],[160,600],[300,600],[320,100]];
+    if(device == "mobile") midMapping = [[300,250],[336,280]];
+    // START: Defining Adunits
+    adUnits.push({
+            network: dfpNetwork,
+            adunit: 'voidpearl-top-leaderboard',
+            size: [[728, 90], [970,250],[300,600]],
+            code: 'div-gpt-ad-voidpearl-top-leaderboard',
+            device: ['desktop'], 
+            pageType: ['homepage'],
+            assignToVariableName: false
+        });   
+    adUnits.push({
+            network: dfpNetwork,
+            adunit: 'voidpearl-mid-banners',
+            size: midMapping,
+            code: 'div-gpt-ad-voidpearl-mid-banners',
+            device: ['desktop','mobile'], 
+            pageType: ['homepage'], 
+            assignToVariableName: false 
+        });    
+    adUnits.push({
+            network: dfpNetwork,
+            adunit: 'voidpearl-mid-banners-2',
+            size: midMapping,
+            code: 'div-gpt-ad-voidpearl-mid-banners-2',
+            device: ['desktop','mobile'], 
+            pageType: ['homepage'], 
+            assignToVariableName: false 
+        });  
+    adUnits.push({
+            network: dfpNetwork,
+            adunit: 'voidpearl-mid-banners-3',
+            size: midMapping,
+            code: 'div-gpt-ad-voidpearl-mid-banners-3',
+            device: ['desktop','mobile'], 
+            pageType: ['homepage'], 
+            assignToVariableName: false
+        });  
+    adUnits.push({
+            network: dfpNetwork,
+            adunit: 'voidpearl-mid-banners-4',
+            size: midMapping,
+            code: 'div-gpt-ad-voidpearl-mid-banners-4',
+            device: ['desktop','mobile'], 
+            pageType: ['homepage'], 
+            assignToVariableName: false
+        });   
+    adUnits.push({
+            network: dfpNetwork,
+            adunit: 'voidpearl-other-leaderboard-large',
+            size: [[728, 90], [970,250],[300,600]],
+            code: 'div-gpt-ad-voidpearl-other-leaderboard-large',
+            device: ['desktop'], 
+            pageType: ['article'],
+            assignToVariableName: false 
+        });  
+    adUnits.push({
+            network: dfpNetwork,
+            adunit: 'voidpearl-leaderboard-bannersize',
+            size: [[300,250],[300,600],[336,280]],
+            code: 'div-gpt-ad-voidpearl-leaderboard-bannersize',
+            device: ['desktop','mobile'], 
+            pageType: ['article','archive'],
+            assignToVariableName: false 
+        });   
+    adUnits.push({
+            network: dfpNetwork,
+            adunit: 'voidpearl-rectangle-bannersize',
+            size: [[300,250],[300,600],[336,280]],
+            code: 'div-gpt-ad-voidpearl-rectangle-bannersize',
+            device: ['desktop','mobile'],
+            pageType: ['article'], 
+            assignToVariableName: false 
+        }); 
+    adUnits.push({
+            network: dfpNetwork,
+            adunit: 'voidpearl-rectangle-bannersize2',
+            size: [[300,250],[300,600],[336,280]],
+            code: 'div-gpt-ad-voidpearl-rectangle-bannersize2',
+            device: ['desktop','mobile'],
+            pageType: ['article','archive'],
+            assignToVariableName: false 
+        });   
+    adUnits.push({
+            network: dfpNetwork,
+            adunit: 'voidpearl-mobile-unit1',
+            size: [[300,250],[320,50],[336,280]],
+            code: 'div-gpt-ad-voidpearl-mobile-unit1',
+            device: ['mobile'], 
+            pageType: ['homepage'],
+            assignToVariableName: false
+        });      
+    adUnits.push({
+            network: dfpNetwork,
+            adunit: 'voidpearl-mobile-unit2',
+            size: [[300,250],[320,50],[336,280]],
+            code: 'div-gpt-ad-voidpearl-mobile-unit2',
+            device: ['mobile'],
+            pageType: ['article'],
+            assignToVariableName: false 
+        });
+    adUnits.push({
+            network: dfpNetwork,
+            adunit: 'voidpearl-mobile-unit3',
+            size: [[300,250],[320,50],[336,280]],
+            code: 'div-gpt-ad-voidpearl-mobile-unit3',
+            device: ['mobile'], 
+            pageType: ['article'],
+            assignToVariableName: false 
+        });
+    adUnits.push({
+            network: dfpNetwork,
+            adunit: 'voidpearl-mobile-unit4',
+            size: [[300,250],[320,50],[336,280]],
+            code: 'div-gpt-ad-voidpearl-mobile-unit4',
+            device: ['mobile'], 
+            pageType: ['article','archive'],
+            assignToVariableName: false 
+        });
+    adUnits.push({
+            network: dfpNetwork,
+            adunit: 'voidpearl-mobile-small1',
+            size: [[320,50]],
+            code: 'div-gpt-ad-voidpearl-mobile-small1',
+            device: ['mobile'], 
+            pageType: ['article'],
+            assignToVariableName: false
+        }); 
+    adUnits.push({
+            network: dfpNetwork,
+            adunit: 'Undertone_1x1',
+            size: [[1,1]],
+            code: 'div-gpt-ad-1508421848178-0',
+            device: ['desktop','mobile'], // display only on device
+            pageType: ['article','archive','homepage'], // display only on page type
+            assignToVariableName: false // false if not in use
+        });                                                                                                  
+    // END: Defining Adunits
+    for (var i = 0, len = adUnits.length; i < len; i++) {
+        if(adUnits[i].device.indexOf(device) === -1) {adUnits[i].display = false; continue;}
+        if(adUnits[i].pageType.indexOf(pageType) === -1) {adUnits[i].display = false; continue;} 
+        adUnits[i].display = true;      
+    }
+    googletag.cmd.push(function() {
+      if(adUnits){
+        var dfpSlots = [];
+        for (var i = 0, len = adUnits.length; i < len; i++) {
+            if(!adUnits[i].display) continue;
+          dfpSlots[i] = googletag.defineSlot('/'+adUnits[i].network+'/'+adUnits[i].adunit, adUnits[i].size, adUnits[i].code).addService(googletag.pubads());
+          if(adUnits[i].assignToVariableName && (adUnits[i].assignToVariableName !== null)) window[adUnits[i].assignToVariableName] = dfpSlots[i];
+        }
+      }
+    });
+    googletag.cmd.push(function() {
+        // Non Header Bidding Adunits
+        googletag.defineSlot('/131593057/Teads', [1, 1], 'div-gpt-ad-1501481781441-4').addService(googletag.pubads());
+        // NSFW
+        googletag.pubads().setTargeting('is_nsfw', 'no');
+        // Header Bidding Targeting
+        pbjs.que.push(function() {pbjs.setTargetingForGPTAsync();});
+        // Init DFP
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().collapseEmptyDivs();
+        googletag.enableServices();
+    });
+</script>
+<script type="text/javascript" async="true" src="LOCATION OF PREBID FILE"></script>
+<!-- END: Header Bidding -->
